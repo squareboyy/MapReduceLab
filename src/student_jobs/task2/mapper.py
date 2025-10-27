@@ -1,15 +1,13 @@
 import string
 from src.core.job.mapper import Mapper
 
-class WordCountMapper(Mapper):
+class LongWordCountMapper(Mapper): 
     def map(self, record, emit):
-        # string.punctuation містить усі стандартні розділові знаки (,.!?" і т.д.)
         translator = str.maketrans('', '', string.punctuation)
-        
         line = str(record)
         
-        # Розділяємо рядок на слова
         for token in line.split():
             cleaned_token = token.translate(translator).lower()
-            if cleaned_token:
+            # Перевіряємо, чи слово не порожнє І його довжина > 5
+            if cleaned_token and len(cleaned_token) > 5:
                 emit(cleaned_token, 1)
