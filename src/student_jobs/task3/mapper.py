@@ -1,7 +1,6 @@
 import string
 from src.core.job.mapper import Mapper
 
-# Визначаємо українські та англійські голосні та приголосні
 VOWELS = "аеєиіїоуюя" + "aeiou"
 CONSONANTS = "бвгґджзйклмнпрстфхцчшщ" + "bcdfghjklmnpqrstvwxyz"
 
@@ -26,5 +25,5 @@ class VowelConsonantMapper(Mapper):
                 elif char in CONSONANTS:
                     c_count += 1
             
-            if v_count > 0 or c_count > 0: # Ігноруємо слова без літер
+            if v_count > 0 or c_count > 0:
                 emit(word_len, (v_count, c_count))

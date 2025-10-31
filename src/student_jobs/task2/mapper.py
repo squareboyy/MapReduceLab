@@ -8,6 +8,5 @@ class LongWordCountMapper(Mapper):
         
         for token in line.split():
             cleaned_token = token.translate(translator).lower()
-            # Перевіряємо, чи слово не порожнє І його довжина > 5
             if cleaned_token and len(cleaned_token) > 5:
                 emit(cleaned_token, 1)

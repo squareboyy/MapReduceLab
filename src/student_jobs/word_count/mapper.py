@@ -7,8 +7,6 @@ class WordCountMapper(Mapper):
         translator = str.maketrans('', '', string.punctuation)
         
         line = str(record)
-        
-        # Розділяємо рядок на слова
         for token in line.split():
             cleaned_token = token.translate(translator).lower()
             if cleaned_token:
